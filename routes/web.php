@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+Route::name('observer.')->group(function(){
+    Route::get('/index',[App\Http\Controllers\ObserverUserController::class,'index'])->name('index');
+    Route::post('/store',[App\Http\Controllers\ObserverUserController::class,'create'])->name('store');
+    Route::post('/update/{id}',[App\Http\Controllers\ObserverUserController::class,'update'])->name('update');
+});
