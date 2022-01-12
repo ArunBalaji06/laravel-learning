@@ -6,6 +6,10 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\LoggedIn;
+use App\Listeners\LoggedInListener;
+use App\Events\LoggedOut;
+use App\Listeners\LoggedOutListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        LoggedIn::class => [
+            LoggedInListener::class,
+        ],
+        LoggedOut::class => [
+            LoggedOutListener::class,
+        ], 
     ];
 
     /**
