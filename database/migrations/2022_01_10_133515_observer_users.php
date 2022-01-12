@@ -19,6 +19,8 @@ class ObserverUsers extends Migration
             $table->string('email');
             $table->string('slug')->nullable();
             $table->integer('updated_count')->nullable()->default(0);
+            $table->string('status')->default(0);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

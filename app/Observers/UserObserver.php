@@ -12,13 +12,14 @@ class UserObserver
      * @param  \App\Models\ObserverUser  $observerUser
      * @return void
      */
-    public function created(ObserverUser $observerUser)
+    public function creating(ObserverUser $observerUser)
     {
         // dd($observerUser);
-        $observerUser->update([
-            'slug' => $observerUser->name.'-'.$observerUser->email
-        ]);
+        // $observerUser->update([
+        //     'slug' => $observerUser->name.'-'.$observerUser->email
+        // ]);
         // Log::info('created');
+        $observerUser->slug = $observerUser->name.'-'.$observerUser->email;
     }
 
     /**
@@ -27,14 +28,12 @@ class UserObserver
      * @param  \App\Models\ObserverUser  $observerUser
      * @return void
      */
-    public function updated(ObserverUser $observerUser)
+    public function updating(ObserverUser $observerUser)
     {
         // dd($observerUser);
         $count = (int)$observerUser->updated_count;
-        $observerUser->update([
-            'updated_count' => $count + 1
-        ]);
-    
+        // dd($count);
+        $observerUser->updated_count = $count+1;
     }
 
     /**
@@ -43,9 +42,17 @@ class UserObserver
      * @param  \App\Models\ObserverUser  $observerUser
      * @return void
      */
-    public function deleted(ObserverUser $observerUser)
+    public function deleting(ObserverUser $observerUser)
     {
-        //
+        // dd(\Carbon\Carbon::now());
+        ObserverUser::create([
+            'name' => $observerUser->name,
+            'email' =>$observerUser->email,
+            'slug' => $observerUser->slug,
+            'updated_count' => $observerUser->updated_count,
+            'status' => 1,
+            'deleted_at' => \Carbon\Carbon::now()
+        ]);
     }
 
     /**
@@ -67,6 +74,6 @@ class UserObserver
      */
     public function forceDeleted(ObserverUser $observerUser)
     {
-        //
+        dd('forcedelete');
     }
 }

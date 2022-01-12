@@ -14,9 +14,9 @@ class ObserverUserController extends Controller
      * Get index page
      */
     public function index(){
-        $users = $this->user->get();
-        // dd($users);
-        return view('index',compact('users'));
+        $users = $this->user->where('status',0)->get();
+        $deletedUsers = $this->user->where('status',1)->get();
+        return view('index',compact('users','deletedUsers'));
     }
 
     /**
@@ -28,18 +28,26 @@ class ObserverUserController extends Controller
         return \Redirect::back();
     }
 
+    /**
+     * Update user.
+     * call observer updating.
+     * @param $id, $request.
+     */
     public function update($id, Request $request){
-        // $count = $this->user->where('id',$id)->pluck('deleted_at')->first();
-        // dd($count);
-        // $count = (int)$count;
-        // $update = ObserverUser::find($id);
-        // $update->deleted_at = $count + 1;
-        // $update->save();
         $users = $this->user->where('id',$id)->first()->update([
             'name' => $request->name,
             'email' => $request->email,
         ]);
         return \Redirect::back();
 
+    }
+
+    /**
+     * Delete User
+     * Call observer Deleteing
+     */
+    public function delete($id){
+        $user = $this->user->where('id',$id)->first()->delete();
+        return \Redirect::back();
     }
 }

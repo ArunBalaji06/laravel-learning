@@ -81,12 +81,35 @@
                         </div>
 
 
-                            <button class="btn btn-warning">Delete</button>
+                            <a href="{{ route('observer.delete', [$user->id]) }}" class="btn btn-warning">Delete</a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">deleted_at</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($deletedUsers as $du)
+                            <tr>
+                                <td>{{$du->name}}</td>
+                                <td>{{$du->email}}</td>
+                                <td>{{$du->deleted_at}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

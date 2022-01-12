@@ -21,7 +21,8 @@ Route::get('/', function () {
 
 
 Route::name('observer.')->group(function(){
-    Route::get('/index',[App\Http\Controllers\ObserverUserController::class,'index'])->name('index');
-    Route::post('/store',[App\Http\Controllers\ObserverUserController::class,'create'])->name('store');
-    Route::post('/update/{id}',[App\Http\Controllers\ObserverUserController::class,'update'])->name('update');
+    Route::get('/ob-index',[App\Http\Controllers\ObserverUserController::class,'index'])->name('index');
+    Route::post('/ob-store',[App\Http\Controllers\ObserverUserController::class,'create'])->name('store');
+    Route::post('/ob-update/{id}',[App\Http\Controllers\ObserverUserController::class,'update'])->name('update');
+    Route::get('/ob-delete/{id}',[App\Http\Controllers\ObserverUserController::class,'delete'])->name('delete');
 });

@@ -14,5 +14,7 @@ class ObserverUser extends Model
         'email',
         'slug',
         'updated_count',
+        'status',
+        'deleted_at'
     ];
 }
