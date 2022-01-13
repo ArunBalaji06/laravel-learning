@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/index', [App\Http\Controllers\NotificationController::class,'index'])->name('notification.index');
+Route::post('/notification', [App\Http\Controllers\NotificationController::class,'sendNotification'])->name('notification.send');
+Route::post('/create', [App\Http\Controllers\NotificationController::class,'create'])->name('notification.create');
+Route::get('/index', [App\Http\Controllers\NotificationController::class,'index'])->name('notification.index');
