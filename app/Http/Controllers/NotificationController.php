@@ -27,9 +27,6 @@ class NotificationController extends Controller
 
             Notification::send($user, new DemoNotification($data));
         }
-        
-        // dd($offerData);
-
         return \Redirect::back();
     }
 
@@ -51,6 +48,6 @@ class NotificationController extends Controller
         $notifiers = DB::table('notifications')
                     ->join('users','users.id','=','notifications.notifiable_id')
                     ->select('users.name as name','notifications.data as data')->get();
-        return view('index',compact('notifiers'));
+        return view('notification.index',compact('notifiers'));
     }
 }
