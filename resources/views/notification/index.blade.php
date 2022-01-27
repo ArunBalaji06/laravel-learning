@@ -51,7 +51,7 @@
                                 Details:<br>
                                 <textarea class="form-control" name="details" type="text"></textarea>
                                 <br>
-                                <button class="btn btn-primary" type="submit">Submit</button>
+                                <button class="btn btn-primary" type="submit">Send</button>
                             </form>
                         </div>
                         </div>

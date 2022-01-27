@@ -21,7 +21,7 @@ class NotificationController extends Controller
                 'body' => $request->details,
                 'thanks' => 'Thank you',
                 'text' => 'click here!',
-                'url' => url('/index'),
+                'url' => url('/notification-index'),
                 'id' => rand(10000,99999)
             ];
 
