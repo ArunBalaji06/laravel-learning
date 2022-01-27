@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::name('component.')->group(function () {
+
+    Route::get('index',['App\Http\Controllers\ComponentController'::class,'index'])->name('index');
+    Route::post('/component-store',['App\Http\Controllers\ComponentController'::class,'store'])->name('store');
+
+});
+
