@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Address;
 
 class User extends Authenticatable
 {
@@ -23,22 +24,24 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function address(){
+        return $this->hasOne(Address::class);
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+
+    public function setNameAttribute($value)
+    {
+        return $this->attributes['first_name'] = $this->name.' '.$value.' '.$this->email;
+    }
+
+    public function scopeFirstuser($value){
+        return $value->where('id',1);
+    }
+    
 }
