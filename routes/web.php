@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\PusherUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/** Auth routes */
+Route::get('/Register',[PusherUserController::class,'index']);
+Route::post('/post-register',[PusherUserController::class,'register']);
+
+Route::get('/', [ChatController::class,'index']);
+Route::get('messages', [ChatController::class,'fetchMessages']);
+Route::post('messages', [ChatController::class,'sendMessage']);
+
+Route::get('/i', [ChatController::class,'i']);
