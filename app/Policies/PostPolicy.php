@@ -41,7 +41,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return $user->id > 0;;
+        return $user->id > 0;
     }
 
     /**

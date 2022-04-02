@@ -18,12 +18,10 @@ class DashboardCOntroller extends Controller
     public function createPost(Request $request){
         $user = User::where('id',Auth::user()->id)->first();
 
-        if ($user->can('create', Post::class)) {
-            $post = Post::create([
-                'user_id' => $user->id,
-                'post' => $request->post,
-            ]);
-        }
+        $post = Post::create([
+            'user_id' => $user->id,
+            'post' => $request->post,
+        ]);
 
         return back()->with('success','Post created successfully');
     }
@@ -31,7 +29,7 @@ class DashboardCOntroller extends Controller
     public function updatePost(Request $request){
         $user = User::where('id',Auth::user()->id)->first();
         $post = Post::where('id',$request->post_id)->first();
-//    dd($request->all());
+
         if ($user->can('update', $post)){
             $post->update([
                 'user_id' => $request->user_id,
