@@ -5,7 +5,7 @@
 
 Laravel gates can be used in blade file for simple authorization.
 
-    Define gate in #### AuthServiceProvider inside of ### Providers directory.
+Define gate in #### AuthServiceProvider inside of ### Providers directory.
 
     #### Example
     ```
@@ -15,7 +15,7 @@ Laravel gates can be used in blade file for simple authorization.
 
     ```
 
-    After defining gate in #### AuthServiceProvider you can use gates in #### Blade file.
+After defining gate in #### AuthServiceProvider you can use gates in #### Blade file.
 
     #### Example
     ```
@@ -29,7 +29,7 @@ Laravel gates can be used in blade file for simple authorization.
 
 Laravel policies can be used for model events and for all records.
 
-    Register policy in #### AuthServiceProvider inside of ### Providers directory.
+Register policy in #### AuthServiceProvider inside of ### Providers directory.
 
     #### Example
     ```
@@ -40,7 +40,7 @@ Laravel policies can be used for model events and for all records.
 
     ```
 
-    After registering policy in #### AuthServiceProvider you can use do your logic in #### Controller.
+After registering policy in #### AuthServiceProvider you can use do your logic in #### Controller.
 
     #### Example
     ```
