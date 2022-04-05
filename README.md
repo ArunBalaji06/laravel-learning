@@ -89,7 +89,7 @@ Roles are created for users and admin, multiple roles can be given.
 ```
 User::create([
             ...do something,
-        ])->assignRole('admin');
+        ])->assignRole('admin')->givePermissionTo('toUpdate');
 ```
 
 Roles can also be used in blade file by blade attribute.
