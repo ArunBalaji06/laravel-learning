@@ -1,6 +1,7 @@
 # laravel-learning
 
-## Reference video - *https://www.youtube.com/watch?v=pIGy7-7gGXI*
+## Reference video - 
+*https://www.youtube.com/watch?v=pIGy7-7gGXI*
 
 # Laravel Websockets
 
