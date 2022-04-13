@@ -37,7 +37,7 @@ Need to create **Pusher Account**
     composer require pusher/pusher-php-server "~3.0"
 ```
 
-Then configure:
+Then configure in *.env*:
 ``` 
     APP_ID
     APP_SECRET
@@ -45,7 +45,7 @@ Then configure:
     APP_CLUSTER
 ```
 
-Next step should be web-sockets configuration
+Next step should be web-sockets configuration.
 
 In project directory *config/websockets.php*
 ```
@@ -81,7 +81,7 @@ And then in project directory *config/broadcasting.php*
         ],
     ],
 ```
-*Note* : If website is added with **SSL** then enable the *'encrypted' => true,*.
+*Note* : If website is added with **SSL** then enable the *'encrypted' => true,*
 
 Then create an new **event** for message sending in laravel.
 ```
@@ -142,12 +142,12 @@ In *view* file
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-Serve the code
+Serve the code.
 ```
     php artisan serve
 ```
 
-Serve the websocket
+Serve the websocket.
 ```
     php artisan websockets:serve
 ```
