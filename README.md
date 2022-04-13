@@ -81,7 +81,7 @@ And then in project directory *config/broadcasting.php*
         ],
     ],
 ```
-*Note* : If website is added with **SSL** then enable the *// 'encrypted' => true,*.
+*Note* : If website is added with **SSL** then enable the *'encrypted' => true,*.
 
 Then create an new **event** for message sending in laravel.
 ```
