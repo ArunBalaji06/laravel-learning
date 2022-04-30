@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,6 +17,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('backup:clean')->daily()->at('16:40');
+        $schedule->command('backup:run')->daily()->at('16:43')
+        ->onFailure(function () {
+            log::info("db back up failure");
+         })
+         ->onSuccess(function () {
+            log::info("db back up success");
+         });
     }
 
     /**
