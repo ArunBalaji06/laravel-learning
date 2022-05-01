@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => env('APP_NAME', 'laravel-backup'),
+        'name' => '1Vhv2PB6712V4gyMqq-1ZKXF8XAB9Fvaj',
 
         'source' => [
 
@@ -116,7 +116,7 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local',
+                'google',
             ],
         ],
 

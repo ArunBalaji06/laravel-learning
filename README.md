@@ -49,3 +49,81 @@ This can be set inside *config/backup.php*
                 ],
             ],
 ```
+
+--------------------------------------------------------------------------------------------------------------
+
+## Drive Storage
+
+Backup the datas to the google drive.
+
+Install package *composer*
+```
+    $ composer require nao-pon/flysystem-google-drive:~1.1
+```
+
+Create a service provider for GoogleDrive
+```
+    $ php artisan make:provider GoogleDriveServiceProvider
+```
+
+Inside *GoogleDriveServiceProvider* boot() method
+```
+        \Storage::extend('google', function ($app, $config) {
+        $client = new \Google_Client();
+        $client->setClientId($config['clientId']);
+        $client->setClientSecret($config['clientSecret']);
+        $client->refreshToken($config['refreshToken']);
+        $service = new \Google_Service_Drive($client);
+        $adapter = new \Hypweb\Flysystem\GoogleDrive\GoogleDriveAdapter($service, $config['folderId']);
+        return new \League\Flysystem\Filesystem($adapter);
+    });     
+```
+
+Add disk in *config/filesystems.php*
+```
+    return [
+    
+        // ...
+        
+        'disks' => [
+            
+            // ...
+            
+            'google' => [
+                'driver' => 'google',
+                'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+                'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+                'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+                'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),
+            ],
+            
+            // ...
+            
+        ],
+        
+        // ...
+    ];
+```
+
+Create google Credentials
+```
+    GOOGLE_DRIVE_CLIENT_ID=xxx.apps.googleusercontent.com
+    GOOGLE_DRIVE_CLIENT_SECRET=xxx
+    GOOGLE_DRIVE_REFRESH_TOKEN=xxx
+    GOOGLE_DRIVE_FOLDER_ID=null
+```
+
+In *config/backup.php*
+```
+    'backup' => [
+
+        /*
+         * The name of this application. You can use this name to monitor
+         * the backups.
+         */
+        'name' => '*id for google drive folder*',
+    ],
+```
+
+--------------------------------------------------------------------------------------------------------------
+
