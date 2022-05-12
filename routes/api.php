@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+    /**     Admin routes     */
+Route::post('/register-admin',[UserController::class,'registerAdmin']);
+
+
+    /**     User routes      */
+Route::post('/register-user',[UserController::class,'registerUser']);
+
+
+    /**     Either ability   */
+Route::get('/view-user',[UserController::class,'viewUsers'])->middleware(['auth:sanctum','ability:user,admin']);
+
+
+    /**     Both admin and user routes   */
+Route::post('/register-super-admin',[UserController::class,'registerSuperAdmin']);
+Route::get('delete',[UserController::class,'delete'])->middleware('auth:sanctum','abilities:admin,user');
+
+Route::get('/logout',[UserController::class,'logout'])->middleware('auth:sanctum');
+
+
