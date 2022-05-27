@@ -1,0 +1,12 @@
+{
+    "name": "arunbalaji/calculator",
+    "description": "Do calculations in package.",
+    "authors": [
+        {
+            "name": "ArunBalaji06",
+            "email": "arunbalaji@sparkouttech.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
