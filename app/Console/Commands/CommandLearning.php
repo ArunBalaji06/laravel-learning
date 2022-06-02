@@ -1,11 +1,44 @@
-# laravel-learning
+<?php
 
-## Artisan command
+namespace App\Console\Commands;
 
-The usage of artisan commands are listed below:
+use Illuminate\Console\Command;
+use App\Models\User;
 
-```
-$argument = $this->argument('name');
+class CommandLearning extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'command:learning {name=balaji} {--queue} {--tag}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command all types are to learn';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+        $argument = $this->argument('name');
 
         $queueOption = $this->option('queue');
 
@@ -58,5 +91,6 @@ $argument = $this->argument('name');
             $count = 0;
             $count++;
         });
-
-```
+        return 0;
+    }
+}
