@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RedisController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/users',[RedisController::class,'usersList']);
+Route::get('/users-get',[RedisController::class,'getUsers']);
+Route::get('/users-get-no-redis',[RedisController::class,'getUsersWithoutRedis']);
+
