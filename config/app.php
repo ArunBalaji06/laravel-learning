@@ -56,6 +56,9 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'stripe_pk' => env('STRIPE_KEY'),
+    'stripte_sk' => env('STRIPE_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
